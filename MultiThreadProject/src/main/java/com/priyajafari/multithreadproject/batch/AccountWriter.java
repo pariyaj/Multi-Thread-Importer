@@ -21,7 +21,7 @@ public class AccountWriter implements ItemWriter<Account> {
 
     public void write(Chunk<? extends Account> chunk) throws Exception {
         log.info("Writing : {}", chunk.getItems().size());
-        accountRepository.saveAll(chunk.getItems());
-        errorWriter.saveErrors();
+        accountRepository.saveAll(chunk.getItems()); //save valid accounts
+        errorWriter.saveErrors(); //add errors
     }
 }
