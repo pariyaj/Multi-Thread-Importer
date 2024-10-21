@@ -80,6 +80,20 @@ public class AccountValidationUtil {
         }
     }
 
+    @SneakyThrows
+    public List<ValidationError> accountValidationErrorFinder() {
+        //list to hold the account validation errors
+        List<ValidationError> accountValidationError = new ArrayList<>();
+
+        performValidation(this::validateAccountBalance, accountValidationError);
+        performValidation(this::validateAccountType, accountValidationError);
+        performValidation(this::validateAccountNumber, accountValidationError);
+        performValidation(this::validateAccountFields, accountValidationError);
+
+        //returning a list of account validation errors
+        return accountValidationError;
+    }
+
     public ValidationResult validateAccountBalance() throws Exception {
 
         String decryptedAccountBalance = AESEncryption.decrypt(account.getAccountBalance());
