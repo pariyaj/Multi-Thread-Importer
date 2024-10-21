@@ -21,12 +21,12 @@ public class AccountProcessor implements ItemProcessor<Account,Account> {
             List<ValidationResult> validationResults = accountValidationUtil.validateAccountData();
             boolean allValid = validationResults.stream().allMatch(ValidationResult::isValid);
             if (allValid)
-                return account;
+                return account; //returnin valid accounts
             else{
                 List<ValidationResult> results = accountValidationUtil(account);
                 for (ValidationResult result : results)
                     if (!result.isValid())
-                        errorWriter.writeError(new CustomError("AccountsError.csv", account.getRecordNumber(), result.getError()));
+                        errorWriter.writeError(new CustomError("AccountsError.csv", account.getRecordNumber(), result.getError())); //adding errors
             }
             return null;
         } catch (Exception e) {
