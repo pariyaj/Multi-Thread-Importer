@@ -71,6 +71,19 @@ public class CustomerValidationUtil {
         }
     }
 
+    @SneakyThrows
+    public List<ValidationError> customerValidationErrorFinder() {
+        //list to hold the customer validation errors
+        List<ValidationError> customerValidationError = new ArrayList<>();
+
+        performValidation(this::validateCustomerNationalId,customerValidationError);
+        performValidation(this::validateCustomerFields,customerValidationError);
+        performValidation(this::validateCustomerBirthDate,customerValidationError);
+
+        //returning a list of customer validation errors
+        return customerValidationError;
+    }
+
     //validate customer birthdate
     public ValidationResult validateCustomerBirthDate () {
         Date birthDate = customer.getCustomerBirthDate();
