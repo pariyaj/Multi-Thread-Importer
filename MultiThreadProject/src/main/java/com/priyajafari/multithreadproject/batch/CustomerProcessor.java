@@ -20,10 +20,11 @@ public class CustomerProcessor implements ItemProcessor<Customer,Customer> {
 
         try{
             List<ValidationResult> validationResults = customerValidationUtil.validateCustomerData();
-            boolean allValid = validationResults.stream().allMatch(ValidationResult::isValid);
+            boolean allValid = validationResults.stream().allMatch(ValidationResult::isValid); //checking if all validations been passed successfully.
             if (allValid)
                 return customer;
-            else{
+            else{ 
+                //as if we have any validation error 
                 List<ValidationResult> results = customerValidationUtil(customer);
                 for (ValidationResult result : results)
                     if (!result.isValid())
