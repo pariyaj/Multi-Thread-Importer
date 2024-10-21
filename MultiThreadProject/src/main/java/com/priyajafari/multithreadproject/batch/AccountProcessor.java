@@ -23,10 +23,10 @@ public class AccountProcessor implements ItemProcessor<Account,Account> {
             if (allValid)
                 return account; //returning valid account
             else{
-                List<ValidationResult> results = accountValidationUtil(account);
-                for (ValidationResult result : results)
-                    if (!result.isValid())
-                        errorWriter.writeError(new CustomError("AccountsError.csv", account.getRecordNumber(), result.getError())); //adding error
+                List<ValidationError> validationErrors = accountValidationUtil.accountValidationErrorFinder();
+                for (ValidationError validationError : validationErrors ) {
+                    errorWriter.writeError(new CustomError("AccountsError.csv", account.getRecordNumber(), validationError));
+                }
             }
             return null;
         } catch (Exception e) {
