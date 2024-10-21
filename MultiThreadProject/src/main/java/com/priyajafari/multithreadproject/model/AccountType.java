@@ -8,9 +8,7 @@ public enum AccountType {
     SAVINGS(1),
     RECURRING_DEPOSIT(2),
     FIXED_DEPOSIT_ACCOUNT(3);
-
     private final int value;
-
     AccountType(final int newValue) {
         this.value = newValue;
     }
