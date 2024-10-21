@@ -55,7 +55,7 @@ public class CustomerValidationUtil {
             }
         }, customerErrors);
 
-        // when any error validation hs been occurred
+        // when any error validation has been occurred
         if (!customerErrors.isEmpty()) {
             return (ValidationResult) customerErrors;
         }
