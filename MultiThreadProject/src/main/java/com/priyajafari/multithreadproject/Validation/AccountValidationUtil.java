@@ -31,7 +31,7 @@ public class AccountValidationUtil {
         // an array list to save validation errors
         List<ValidationError> accountErrors = new ArrayList<>();
 
-        // method for different validations of account data
+        // methods for different validations of account data
         performValidation(this::validateAccountBalance, accountErrors);
         performValidation(() -> {
             try {
