@@ -31,7 +31,7 @@ public class AccountValidationUtil {
         // an array list to save validation errors
         List<ValidationError> accountErrors = new ArrayList<>();
 
-        // method for different validations of customer data
+        // method for different validations of account data
         performValidation(this::validateAccountBalance, accountErrors);
         performValidation(() -> {
             try {
@@ -72,7 +72,7 @@ public class AccountValidationUtil {
         // when all validations pass
         return new ValidationResult(true, null);
     }
-    // to perform all validations for customer at once
+    // to perform all validations for account at once
     public void performValidation(Supplier<ValidationResult> validationMethod, List<ValidationError> errors) {
         ValidationResult result = validationMethod.get();
         if (!result.isValid()) {
