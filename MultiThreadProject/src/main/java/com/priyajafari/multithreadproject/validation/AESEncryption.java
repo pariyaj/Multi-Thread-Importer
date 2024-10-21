@@ -8,7 +8,7 @@ import java.util.Base64;
 public class AESEncryption {
     private static  final String algorithm = "AES";
     private static final String transformation = "AES/ECB/PKCS5Padding";
-    private static final String AESSecretKey = "SixteenByteKey00";  // 16-byte AES key for encryption
+    private static final String AESSecretKey = "SecretKey16Byte0";
 
     public static String decrypt(String encryptedValue) throws Exception {
         SecretKey key = new SecretKeySpec(AESSecretKey.getBytes(), algorithm);
