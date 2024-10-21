@@ -25,10 +25,10 @@ public class CustomerProcessor implements ItemProcessor<Customer,Customer> {
                 return customer;
             else{ 
                 //as if we have any validation error 
-                List<ValidationResult> results = customerValidationUtil(customer);
-                for (ValidationResult result : results)
-                    if (!result.isValid())
-                        errorWriter.writeError(new CustomError("AccountsError.csv", customer.getRecordNumber(), result.getError()));
+                List<ValidationError> validationErrors = customerValidationUtil.customerValidationErrorFinder();
+                for (ValidationError validationError : validationErrors ) {
+                    errorWriter.writeError(new CustomError("AccountsError.csv", customer.getRecordNumber(), validationError));
+                }
             }
             return null;
         } catch (Exception e) {
