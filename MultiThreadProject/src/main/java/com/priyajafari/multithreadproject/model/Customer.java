@@ -45,6 +45,7 @@ public class Customer {
     @Column(name = "customer_national_id", length = 10, nullable = false)
     private String customerNationalId;
     @NotNull
+    @Temporal
     @Column(name = "customer_birth_date", nullable = false)
     private Date customerBirthDate;
 
